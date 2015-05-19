@@ -5,6 +5,7 @@ var config = require('./config')({
 
 require('win-common')(config);
 
+
 var server = require('./webserver')(config);
 var api = require('./api')(config);
 var robustAuth = require('robust-auth')({
@@ -15,6 +16,9 @@ var robustAuth = require('robust-auth')({
       "/public":true
     }
   }, {
+    addAuthUser:function(){return p.resolve()},
+    deleteUser:function(){return p.resolve()},
+
   create: function (resourceName, resource) {
     return p.resolve().then(function () {
       log(resourceName, resource);

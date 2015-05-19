@@ -16,8 +16,10 @@ module.exports = function construct(config) {
   config = config ? _.cloneDeep(config) : {};
   config = _.defaults(config, {});
 
-  m.attach = function(server) {
+
+  m.attach = function (server) {
     // TODO: loop through all api modules and run attach method.
+    server.post('/updateInstances', require('./updateInstances')(config))
   };
 
   return m;
