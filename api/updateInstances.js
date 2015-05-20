@@ -14,16 +14,9 @@ module.exports = function (config) {
    * @returns {*}
    */
   return  function (req,res) {
-    //todo, use req instead
-    var param={
-      "projectName": "name",
-      "roleName": "worker",
-      "key":123
-    };
-
     return p.resolve()
       .then(function(){
-        return cmdpost.updateInstance(param)
+        return cmdpost.updateInstance(req.body)
       })
       .then(function (result) {
         res.send(result).status(200)
